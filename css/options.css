@@ -1,0 +1,148 @@
+.container {
+  width: 100%;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+  padding: .75rem;
+}
+
+a, a:active, a:link {
+  color: #444444;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+li {
+  line-height: 1.5rem;
+}
+
+#bookmarks {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  float: none;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 0;
+  margin-bottom: 1rem;
+  border-radius: .25rem;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+.card .header {
+  font-size: 1.2rem;
+  color: #666666;
+  display: flex;
+  padding: .5rem 1rem;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.card .header h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+  color: #666666;
+  font-weight: normal;
+}
+.card .header .toolbar {
+  margin-left: auto;
+}
+.card .body {
+  flex-grow: 1;
+  padding: .5rem 1rem;
+}
+.card .footer {
+  flex-grow: 1;
+  border-top: 1px solid rgba(0,0,0,.05);
+  padding: .5rem 1rem;
+}
+
+.form {
+
+}
+.form .field {
+  clear: both;
+  padding-bottom: 1rem;
+}
+.form .field:last-child {
+  padding-bottom: 0;
+}
+.form .field > label {
+  display: block;
+  margin: 0 0 .28571429rem 0;
+  color: rgba(0,0,0,.87);
+  font-size: .92857143rem;
+  font-weight: 700;
+}
+.form .field > input {
+  width: 100%;
+  display: block;
+  height: 2rem;
+  padding: 0 .25rem;
+  box-shadow: none;
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: .25rem;
+  line-height: 1rem;
+  transition: box-shadow .1s ease, width .1s ease, -webkit-box-shadow .1s ease;
+}
+.form .field > select {
+  width: 100%;
+  display: block;
+  white-space: normal;
+  cursor: pointer;
+  height: 2rem;
+  padding: 0 1rem;
+  box-shadow: none;
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: .25rem;
+  line-height: 1rem;
+  transition: box-shadow .1s ease, width .1s ease, -webkit-box-shadow .1s ease;
+}
+.form .field span.help {
+  font-size: .7rem;
+  color: #666666;
+}
+.form .field .gallery {
+
+}
+.form .field .gallery img.image {
+  height: 100px;
+  margin-right: .5rem;
+  margin-bottom: .5rem;
+}
+.form .field .gallery img.image.selected {
+  border: 2px solid #db2828;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

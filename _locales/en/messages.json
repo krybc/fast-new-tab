@@ -1,0 +1,47 @@
+{
+  "chrome_extension_name": {
+    "message": "Fast new tab"
+  },
+  "chrome_extension_shortName": {
+    "message": "Fast new tab"
+  },
+  "chrome_extension_description": {
+    "message": "Personalize your new tab page with widgets and custom background"
+  },
+  "widget_saved": {
+    "message": "Widget has been saved"
+  },
+  "settings_saved": {
+    "message": "Settings has been saved"
+  },
+  "widget_add": {
+    "message": "Add widget"
+  },
+  "widget_settings_title": {
+    "message": "Extension settings"
+  },
+  "widget_settings_field_columns_label": {
+    "message": "Number of clumns"
+  },
+  "widget_settings_field_backgroundGallery_label": {
+    "message": "Background from the gallery"
+  },
+  "widget_settings_field_backgroundUrl_label": {
+    "message": "Background from URL"
+  },
+  "widget_settings_field_backgroundUrl_help": {
+    "message": "Background file must be less than 5MB"
+  },
+  "widget_settings_submit": {
+    "message": "Save settings"
+  },
+  "widget_bookmarks_title": {
+    "message": "Bookmarks widget"
+  },
+  "widget_bookmarks_field_title_label": {
+    "message": "Widget name"
+  },
+  "widget_bookmarks_field_group_label": {
+    "message": "Bookmarks group"
+  }
+}

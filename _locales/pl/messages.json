@@ -1,0 +1,47 @@
+{
+  "chrome_extension_name": {
+    "message": "Fast new tab"
+  },
+  "chrome_extension_shortName": {
+    "message": "Fast new tab"
+  },
+  "chrome_extension_description": {
+    "message": "Personalizuj nową kartę chrome przy użyciu widgetów i własnego tła"
+  },
+  "widget_saved": {
+    "message": "Widget został zapisany"
+  },
+  "settings_saved": {
+    "message": "Ustawienia zostały zapisane"
+  },
+  "widget_add": {
+    "message": "Dodaj widget"
+  },
+  "widget_settings_title": {
+    "message": "Ustawienia rozszerzenia"
+  },
+  "widget_settings_field_columns_label": {
+    "message": "Ilość kolumn"
+  },
+  "widget_settings_field_backgroundGallery_label": {
+    "message": "Tło z galerii"
+  },
+  "widget_settings_field_backgroundUrl_label": {
+    "message": "Tło z adresu URL"
+  },
+  "widget_settings_field_backgroundUrl_help": {
+    "message": "Zdjęcie nie może mieć więcej niż 5MB"
+  },
+  "widget_settings_submit": {
+    "message": "Zapisz ustawienia"
+  },
+  "widget_bookmarks_title": {
+    "message": "Widget zakładek"
+  },
+  "widget_bookmarks_field_title_label": {
+    "message": "Nazwa widgetu"
+  },
+  "widget_bookmarks_field_group_label": {
+    "message": "Grupa zakładek"
+  }
+}
