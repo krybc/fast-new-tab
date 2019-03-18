@@ -16,10 +16,17 @@ Extension is available on [Chrome Web Store](https://chrome.google.com/webstore/
 ## Roadmap
 
 ### 0.3.0
-[] Google search widget
+[ ] Google search widget
 
 ### 0.2.0
-[] Most visited widget
+[ ] Most visited widget
+
+### 0.1.2
+[ ] Removing widgets
+
+### 0.1.1
+[x] Bugfix: Removing storage after Chrome updated
+[x] Bugfix: Removed "Other bookmarks" from select list
 
 ### 0.1.0
-[] Bookmarks widget
+[x] Bookmarks widget

@@ -208,18 +208,23 @@ let widgetBookmarksClass = class widgetBookmarks {
     container.innerHTML = html;
 
     document.getElementById('widgets').appendChild(container);
+    this.drawGroups();
 
     document.getElementById('widget_bookmarks_group').addEventListener('change', function (event) {
       document.getElementById('widget_bookmarks_title').setAttribute('value', event.target.options[event.target.selectedIndex].text);
     });
+
     document.getElementById('widget_bookmarks_submit').addEventListener('click', this.save);
-    this.drawGroups();
   }
 
   drawGroups() {
     this.getGroups().then(result => {
       let groups = this.drawGroupsOptions(result[0].children);
-      document.querySelector('#widget-bookmarks select').innerHTML = groups;
+      document.getElementById('widget_bookmarks_group').innerHTML = groups;
+
+      if (document.getElementById('widget_bookmarks_group').options.length > 0) {
+        document.getElementById('widget_bookmarks_title').setAttribute('value', document.getElementById('widget_bookmarks_group').options[0].text);
+      }
     });
   }
 
@@ -228,7 +233,10 @@ let widgetBookmarksClass = class widgetBookmarks {
     let i;
     for (i = 0; i < bookmarkNodes.length; i++) {
       if (bookmarkNodes[i].children && bookmarkNodes[i].children.length > 0) {
-        html += `<option value="${bookmarkNodes[i].id}">${bookmarkNodes[i].title}</option>`;
+        if (bookmarkNodes[i].parentId !== '0') {
+          html += `<option value="${bookmarkNodes[i].id}">${bookmarkNodes[i].title}</option>`;
+        }
+
         html += this.drawGroupsOptions(bookmarkNodes[i].children);
       }
     }

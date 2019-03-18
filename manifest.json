@@ -4,7 +4,7 @@
   "shortName": "__MSG_chrome_extenstion_shortName__",
   "description": "__MSG_chrome_extension_description__",
   "author": "Kamil Rybczyński",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "default_locale": "en",
   "chrome_url_overrides": {
     "newtab": "newtab.html"
