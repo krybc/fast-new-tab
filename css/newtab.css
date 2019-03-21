@@ -13,6 +13,7 @@
   padding: .75rem;
   width: 310px;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 a, a:active, a:link {
@@ -59,6 +60,13 @@ li {
   font-size: 1rem;
   margin-left: auto;
 }
+.card .header .toolbar i {
+  padding: 0 .5rem;
+  cursor: pointer;
+}
+.card .header .toolbar i:last-child {
+  padding-right: 0;
+}
 .card .body {
 
 }
@@ -68,4 +76,23 @@ li {
 
 body.dropdown .col:hover {
   border: 2px dotted #ffffff;
+  box-sizing: border-box;
+}
+
+#actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.5rem;
+  background: #ffffff;
+  padding: .5rem 1rem;
+  border-bottom-left-radius: 2px;
+  color: #666666;
+}
+#actions i {
+  padding: 0;
+  cursor: pointer;
+}
+#actions i:last-child {
+  padding-right: 0;
 }

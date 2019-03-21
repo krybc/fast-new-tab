@@ -17,6 +17,12 @@
   "widget_add": {
     "message": "Dodaj widget"
   },
+  "widget_remove_confirmation": {
+    "message": "Czy na pewno chcesz usunnąć widget?"
+  },
+  "widget_removed": {
+    "message": "Widget został usunięty"
+  },
   "widget_settings_title": {
     "message": "Ustawienia rozszerzenia"
   },

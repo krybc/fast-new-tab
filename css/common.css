@@ -123,3 +123,10 @@ body {
   background-color: #db2828;
   color: #fff;
 }
+
+/**
+ * Utilities
+ */
+.hide {
+  display: none;
+}

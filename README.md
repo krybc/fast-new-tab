@@ -22,7 +22,8 @@ Extension is available on [Chrome Web Store](https://chrome.google.com/webstore/
 [ ] Most visited widget
 
 ### 0.1.2
-[ ] Removing widgets
+[x] Removing widgets
+[ ] Bugfix: Drag'n'drop improvements
 
 ### 0.1.1
 [x] Bugfix: Removing storage after Chrome updated

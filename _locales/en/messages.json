@@ -17,6 +17,12 @@
   "widget_add": {
     "message": "Add widget"
   },
+  "widget_remove_confirmation": {
+    "message": "Do you really want to delete the widget?"
+  },
+  "widget_removed": {
+    "message": "Widget has been succesfully removed"
+  },
   "widget_settings_title": {
     "message": "Extension settings"
   },
