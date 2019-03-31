@@ -1,8 +1,8 @@
-# Fast new tab
+# Fast New Tab
 
-**Fast New Tab** is a Chrome extension that allows you to add widgets and custom background on new tab page.
+**Fast New Tab** is a Chrome extension that allows the user to add widgets and custom backgrounds to new tab pages.
 
-The most important feature of the **Fast New Tab** is it's speed. I use only vanilla JS and CSS, without any JS libraries or CSS frameworks.
+The most important feature of the **Fast New Tab** is it's speed. It is written in vanilla JS and CSS, without utilizing any JS libraries or CSS frameworks.
 
 ## Requirements
 
