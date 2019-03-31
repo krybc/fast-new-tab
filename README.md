@@ -15,15 +15,19 @@ Extension is available on [Chrome Web Store](https://chrome.google.com/webstore/
 
 ## Roadmap
 
-### 0.3.0
-[ ] Google search widget
+### 0.4.0
+[ ] Weather widget
 
-### 0.2.0
+### 0.3.0
 [ ] Most visited widget
 
-### 0.1.2
+### 0.2.0
+[x] New logo
+[x] New layout
 [x] Removing widgets
-[ ] Bugfix: Drag'n'drop improvements
+[x] Bugfix: Drag'n'drop improvements
+[x] Fix: Remove used categories from select when adding widget
+[x] Bugfix: Clear storage widgets when change background after added widget
 
 ### 0.1.1
 [x] Bugfix: Removing storage after Chrome updated

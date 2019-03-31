@@ -1,10 +1,9 @@
 {
   "manifest_version": 2,
   "name": "__MSG_chrome_extension_name__",
-  "shortName": "__MSG_chrome_extenstion_shortName__",
   "description": "__MSG_chrome_extension_description__",
   "author": "Kamil Rybczyński",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "default_locale": "en",
   "chrome_url_overrides": {
     "newtab": "newtab.html"

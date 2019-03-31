@@ -1,17 +1,6 @@
-.container {
-  width: 100%;
+body {
+  background: #efefef;
 }
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-.col {
-  flex-grow: 1;
-  flex-basis: 0;
-  max-width: 100%;
-  padding: .75rem;
-}
-
 a, a:active, a:link {
   color: #444444;
   text-decoration: none;
@@ -27,6 +16,24 @@ li {
   line-height: 1.5rem;
 }
 
+.container {
+  width: 100%;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+#settings .card {
+  background: transparent;
+}
+
 #bookmarks {
   display: flex;
   justify-content: center;
@@ -35,100 +42,124 @@ li {
 .card {
   float: none;
   flex-direction: column;
-  background: #ffffff;
   padding: 0;
   margin-bottom: 1rem;
-  border-radius: .25rem;
-  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
 }
 .card .header {
   font-size: 1.2rem;
-  color: #666666;
+  color: #999999;
   display: flex;
   padding: .5rem 1rem;
-  border-bottom: 1px solid rgba(0,0,0,.05);
 }
 .card .header h2 {
   padding: 0;
   margin: 0;
-  font-size: 1.2rem;
-  color: #666666;
+  font-size: 1rem;
   font-weight: normal;
+}
+.card .header h2 i {
+  padding-right: .5rem;
 }
 .card .header .toolbar {
   margin-left: auto;
 }
 .card .body {
   flex-grow: 1;
-  padding: .5rem 1rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: .5rem;
+  box-shadow: 0 1px 16px 0 #dfdfdf;
 }
-.card .footer {
+.card .body .footer {
   flex-grow: 1;
-  border-top: 1px solid rgba(0,0,0,.05);
-  padding: .5rem 1rem;
+  padding-top: 2rem;
 }
 
 .form {
 
 }
-.form .field {
-  clear: both;
+.form .control {
   padding-bottom: 1rem;
 }
-.form .field:last-child {
+.form .control:last-child {
   padding-bottom: 0;
 }
-.form .field > label {
-  display: block;
-  margin: 0 0 .28571429rem 0;
-  color: rgba(0,0,0,.87);
-  font-size: .92857143rem;
-  font-weight: 700;
+.form .control .field {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
 }
-.form .field > input {
-  width: 100%;
-  display: block;
+.form .control .field > label {
+  font-size: .8rem;
+  color: #666666;
+  font-weight: 700;
+  flex-basis: auto;
+  line-height: 2rem;
+}
+.form .control .field > input {
+  padding: 0 .5rem;
   height: 2rem;
-  padding: 0 .25rem;
   box-shadow: none;
   border: 1px solid rgba(34,36,38,.15);
-  border-radius: .25rem;
+  border-radius: .5rem;
   line-height: 1rem;
   transition: box-shadow .1s ease, width .1s ease, -webkit-box-shadow .1s ease;
 }
-.form .field > select {
-  width: 100%;
-  display: block;
+.form .control .field > select {
   white-space: normal;
   cursor: pointer;
   height: 2rem;
-  padding: 0 1rem;
   box-shadow: none;
   border: 1px solid rgba(34,36,38,.15);
-  border-radius: .25rem;
+  border-radius: .5rem;
   line-height: 1rem;
   transition: box-shadow .1s ease, width .1s ease, -webkit-box-shadow .1s ease;
 }
-.form .field span.help {
+.form .control span.help {
+  display: block;
   font-size: .7rem;
-  color: #666666;
+  color: #999999;
+  padding: .25rem 0 0 0;
 }
-.form .field .gallery {
-
+.form .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
 }
-.form .field .gallery img.image {
-  height: 100px;
+.form .gallery .image {
   margin-right: .5rem;
   margin-bottom: .5rem;
+  flex-direction: column;
+  border-radius: .5rem;
+  height: 100px;
+  width: 160px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
 }
-.form .field .gallery img.image.selected {
-  border: 2px solid #db2828;
-  box-sizing: border-box;
+.form .gallery .image.selected {
+
 }
+.form .gallery .image.selected .check-icon {
+  color: #ffffff;
+  border-radius: 1rem;
+  display: block;
+  position: absolute;
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  background: #e94e49;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+.form .gallery .image.selected .check-icon .i {
 
-
-
-
+}
 
 
 

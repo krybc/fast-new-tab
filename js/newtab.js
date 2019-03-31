@@ -94,11 +94,15 @@ class App {
       widgetElement.setAttribute('draggable', true);
 
       let widgetHtml = `
-        <div class="header"><h2>${widget.title}</h2>
-        <div class="toolbar">
+        <div class="header">
+          <h2>
+            <i class="fa fa-list"></i>
+            ${widget.title}
+          </h2>
+          <div class="toolbar">
             <i class="toolbar-icon fa fa-arrows-alt dnd hide"></i>
             <i class="toolbar-icon fa fa-trash remove hide"></i>
-        </div>
+          </div>
         </div>
         <div class="body"></div>
       `;
@@ -206,19 +210,24 @@ class DragAndDrop {
   }
 
   static drop(event) {
-    if (event.target.childNodes.length > 0) {
-      event.target.childNodes.forEach(function (node) {
-        if (node.offsetTop > event.offsetY) {
-          node.parentNode.insertBefore(DragAndDrop.box, node);
-        } else {
-          node.parentNode.append(DragAndDrop.box);
-        }
-      });
-    } else {
-      this.append(DragAndDrop.box);
-    }
+    if (DragAndDrop.box !== undefined) {
+      if (event.target.childNodes.length > 0) {
+        event.target.childNodes.forEach(function (node) {
+          if (node.offsetTop > event.offsetY) {
+            node.parentNode.insertBefore(DragAndDrop.box, node);
+          } else {
+            node.parentNode.append(DragAndDrop.box);
+          }
+        });
+      } else {
+        this.append(DragAndDrop.box);
+      }
 
-    App.widgetsSave(event.target);
+      App.widgetsSave(event.target);
+      DragAndDrop.box = undefined;
+    } else {
+      Message.danger(chrome.i18n.getMessage('widget_saved_failed_dnd_bad_handler'));
+    }
 
     this.className = "col";
   }

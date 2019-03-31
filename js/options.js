@@ -48,8 +48,12 @@ class App {
   }
 
   static settingsSave(settings) {
-    storage.settings = settings;
-    App.storageSave(storage);
+    chrome.storage.sync.get(function(storage) {
+      if (!chrome.runtime.error) {
+        storage.settings = settings;
+        App.storageSave(storage);
+      }
+    });
   }
 
   static storageSave(storage) {
@@ -70,44 +74,77 @@ class Settings {
       backgroundUrl = storage.settings.background;
     }
 
-    let html = `
+    // settings
+    let settingsHtml = `
       <div class="header">
-        ${chrome.i18n.getMessage('widget_settings_title')}
+        <h2>
+          <i class="fa fa-cogs"></i>
+          ${chrome.i18n.getMessage('widget_settings_title')}
+        </h2>
       </div>
       <div class="body">
         <form class="form">
-          <div class="field">
-            <label>${chrome.i18n.getMessage('widget_settings_field_columns_label')}</label>
-            <input type="number" id="settings_columns" value="${storage.settings.columns}">
+          <div class="control">
+            <div class="field">
+              <label>${chrome.i18n.getMessage('widget_settings_field_columns_label')}</label>
+              <input type="number" size="3" id="settings_columns" value="${storage.settings.columns}">
+            </div>
           </div>
-          <div class="field">
-            <label>${chrome.i18n.getMessage('widget_settings_field_backgroundGallery_label')}</label>
-            <div class="gallery" id="background-gallery"></div>
-          </div>
-          <div class="field">
-            <label>${chrome.i18n.getMessage('widget_settings_field_backgroundUrl_label')}</label>
-            <input type="text" id="settings_background_url" value="${backgroundUrl}">
-            <span class="help">${chrome.i18n.getMessage('widget_settings_field_backgroundUrl_help')}</span>
-          </div>
-          <input type="hidden" id="settings_background" value="${storage.settings.background}">
         </form>
-      </div>
-      <div class="footer">
-        <button type="button" class="button blue" id="settings_submit">${chrome.i18n.getMessage('widget_settings_submit')}</button>
+        <div class="footer">
+          <button type="button" class="button blue" id="settings_submit">
+            <i class="fa fa-check-circle"></i>
+            ${chrome.i18n.getMessage('widget_settings_submit')}
+          </button>
+        </div>
       </div>
     `;
 
-    let container = document.createElement('div');
-    container.setAttribute('class', 'card border-0 shadow-0');
-    container.innerHTML = html;
+    let settingsContainer = document.createElement('div');
+    settingsContainer.setAttribute('class', 'card border-0 shadow-0');
+    settingsContainer.innerHTML = settingsHtml;
+    document.getElementById('settings').appendChild(settingsContainer);
 
-    document.getElementById('settings').appendChild(container);
+    // backgrounds
+    let backgroundHtml = `
+      <div class="header">
+        <h2>
+          <i class="fa fa-image"></i>
+          ${chrome.i18n.getMessage('widget_settings_background_title')}
+        </h2>
+      </div>
+      <div class="body">
+        <form class="form">
+          <div class="gallery" id="background-gallery"></div>
+          <div class="control">
+            <div class="field">
+              <label>${chrome.i18n.getMessage('widget_settings_background_field_backgroundUrl_label')}</label>
+              <input type="text" id="settings_background_url" size="50" value="${backgroundUrl}">
+            </div>
+            <span class="help text-right">${chrome.i18n.getMessage('widget_settings_background_field_backgroundUrl_help')}</span>
+          </div>
+          <input type="hidden" id="settings_background" value="${storage.settings.background}">
+        </form>
+        <div class="footer">
+          <button type="button" class="button blue" id="background_submit">
+            <i class="fa fa-check-circle"></i>
+            ${chrome.i18n.getMessage('widget_settings_background_submit')}
+          </button>
+        </div>
+      </div>
+    `;
+
+    let backgroundContainer = document.createElement('div');
+    backgroundContainer.setAttribute('class', 'card border-0 shadow-0');
+    backgroundContainer.innerHTML = backgroundHtml;
+    document.getElementById('settings').appendChild(backgroundContainer);
 
     this.drawBackgroundGallery();
 
     document.getElementById('settings_background_url').addEventListener('change', this.setBackgroundFromURL);
 
     document.getElementById('settings_submit').addEventListener('click', this.save);
+    document.getElementById('background_submit').addEventListener('click', this.save);
   }
 
   drawBackgroundGallery() {
@@ -116,34 +153,50 @@ class Settings {
       '2.jpg',
       '3.jpg',
       '4.jpg',
-      '5.jpg'
+      '5.jpg',
+      '6.jpg',
+      '7.jpg'
     ];
 
     images.forEach(image => {
-      let imageElement = document.createElement('img');
       let imageUrl = chrome.runtime.getURL(constants.backgroundDir + image);
+      let imageElement = document.createElement('div');
       imageElement.setAttribute('class', 'image');
-      imageElement.setAttribute('src', imageUrl);
       imageElement.setAttribute('data-background-id', image);
+      imageElement.setAttribute('style', `background-image: url("${imageUrl}")`);
 
       if (storage.settings.background === image) {
         imageElement.classList.add('selected');
+        let checkElement = document.createElement('div');
+        checkElement.setAttribute('class', 'check-icon');
+        let checkIconElement = document.createElement('i');
+        checkIconElement.setAttribute('class', 'fa fa-check-circle');
+        checkElement.appendChild(checkIconElement);
+        imageElement.appendChild(checkElement);
       }
 
       imageElement.addEventListener('click', this.setBackgroundFromGallery);
-
       document.getElementById('background-gallery').appendChild(imageElement);
     });
   }
 
   setBackgroundFromGallery(event) {
-    document.getElementById('settings_background').value = event.target.getAttribute('data-background-id');
+    const target = event.target;
+    document.getElementById('settings_background').value = target.getAttribute('data-background-id');
     document.getElementById('settings_background_url').value = '';
 
     document.querySelectorAll('#background-gallery .image').forEach(element => {
       element.classList.remove('selected');
+      element.innerHTML = '';
     });
-    event.target.classList.add('selected');
+
+    target.classList.add('selected');
+    let checkElement = document.createElement('div');
+    checkElement.setAttribute('class', 'check-icon');
+    let checkIconElement = document.createElement('i');
+    checkIconElement.setAttribute('class', 'fa fa-check-circle');
+    checkElement.appendChild(checkIconElement);
+    target.appendChild(checkElement);
   }
 
   setBackgroundFromURL(event) {
@@ -163,7 +216,6 @@ class Settings {
       Helpers.getImageBase64(settings.backgroundUrl)
         .then(result => {
           localStorage.setItem('backgroundBase64', result);
-
         });
     }
 
@@ -180,24 +232,40 @@ let widgetBookmarksClass = class widgetBookmarks {
 
   }
 
+  static drawEnabled() {
+    return new Promise((resolve, reject) => {
+      resolve(true);
+    });
+  }
+
   draw() {
     let html = `
     <div class="header">
-      <h2>${chrome.i18n.getMessage('widget_bookmarks_title')}</h2>
+      <h2>
+        <i class="fa fa-list"></i>
+        ${chrome.i18n.getMessage('widget_bookmarks_title')}
+      </h2>
     </div>
     <form class="form" id="widget_bookmarks">
     <div class="body">
-      <div class="field">
-        <label>${chrome.i18n.getMessage('widget_bookmarks_field_title_label')}</label>
-        <input type="text" id="widget_bookmarks_title">
+      <div class="control">
+        <div class="field">
+          <label>${chrome.i18n.getMessage('widget_bookmarks_field_title_label')}</label>
+          <input type="text" id="widget_bookmarks_title">
+        </div>
       </div>
-      <div class="field">
-        <label>${chrome.i18n.getMessage('widget_bookmarks_field_group_label')}</label>
-        <select id="widget_bookmarks_group"></select>
+      <div class="control">
+        <div class="field">
+          <label>${chrome.i18n.getMessage('widget_bookmarks_field_group_label')}</label>
+          <select id="widget_bookmarks_group"></select>
+        </div>
       </div>
-    </div>
-    <div class="footer">
-      <button type="button" class="button blue" id="widget_bookmarks_submit">${chrome.i18n.getMessage('widget_add')}</button>
+      <div class="footer">
+        <button type="button" class="button blue" id="widget_bookmarks_submit">
+          <i class="fa fa-check-circle"></i>
+          ${chrome.i18n.getMessage('widget_add')}
+        </button>
+      </div>
     </div>
     </form>
     `;
@@ -233,7 +301,7 @@ let widgetBookmarksClass = class widgetBookmarks {
     let i;
     for (i = 0; i < bookmarkNodes.length; i++) {
       if (bookmarkNodes[i].children && bookmarkNodes[i].children.length > 0) {
-        if (bookmarkNodes[i].parentId !== '0') {
+        if (bookmarkNodes[i].parentId !== '0' && !storage.widgets.find(w => w.type === 'bookmarks' && w.group === bookmarkNodes[i].id)) {
           html += `<option value="${bookmarkNodes[i].id}">${bookmarkNodes[i].title}</option>`;
         }
 
@@ -275,6 +343,13 @@ document.body.onload = function() {
       new Settings().draw();
       widgets.forEach(function (widget) {
         new widget().draw();
+        // console.log(widget);
+        // widget.drawEnabled.then(enabled => {
+        //   console.log(enabled);
+        //   if (enabled === true) {
+        //     new widget().draw();
+        //   }
+        // });
       });
     }
   });

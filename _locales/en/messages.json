@@ -2,14 +2,14 @@
   "chrome_extension_name": {
     "message": "Fast new tab"
   },
-  "chrome_extension_shortName": {
-    "message": "Fast new tab"
-  },
   "chrome_extension_description": {
     "message": "Personalize your new tab page with widgets and custom background"
   },
   "widget_saved": {
     "message": "Widget has been saved"
+  },
+  "widget_saved_failed_dnd_bad_handler": {
+    "message": "You must use the drag icon to moving widgets"
   },
   "settings_saved": {
     "message": "Settings has been saved"
@@ -29,17 +29,23 @@
   "widget_settings_field_columns_label": {
     "message": "Number of clumns"
   },
-  "widget_settings_field_backgroundGallery_label": {
-    "message": "Background from the gallery"
-  },
-  "widget_settings_field_backgroundUrl_label": {
-    "message": "Background from URL"
-  },
-  "widget_settings_field_backgroundUrl_help": {
-    "message": "Background file must be less than 5MB"
-  },
   "widget_settings_submit": {
     "message": "Save settings"
+  },
+  "widget_settings_background_title": {
+    "message": "Background"
+  },
+  "widget_settings_background_field_backgroundGallery_label": {
+    "message": "Background from the gallery"
+  },
+  "widget_settings_background_field_backgroundUrl_label": {
+    "message": "Background from URL"
+  },
+  "widget_settings_background_field_backgroundUrl_help": {
+    "message": "Background file must be less than 5MB"
+  },
+  "widget_settings_background_submit": {
+    "message": "Save background"
   },
   "widget_bookmarks_title": {
     "message": "Bookmarks widget"
