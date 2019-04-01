@@ -16,22 +16,22 @@ Extension is available on [Chrome Web Store](https://chrome.google.com/webstore/
 ## Roadmap
 
 ### 0.4.0
-[ ] Weather widget
+- [ ] Weather widget
 
 ### 0.3.0
-[ ] Most visited widget
+- [ ] Most visited widget
 
 ### 0.2.0
-[x] New logo
-[x] New layout
-[x] Removing widgets
-[x] Bugfix: Drag'n'drop improvements
-[x] Fix: Remove used categories from select when adding widget
-[x] Bugfix: Clear storage widgets when change background after added widget
+- [x] New logo
+- [x] New layout
+- [x] Removing widgets
+- [x] Bugfix: Drag'n'drop improvements
+- [x] Fix: Remove used categories from select when adding widget
+- [x] Bugfix: Clear storage widgets when change background after added widget
 
 ### 0.1.1
-[x] Bugfix: Removing storage after Chrome updated
-[x] Bugfix: Removed "Other bookmarks" from select list
+- [x] Bugfix: Removing storage after Chrome updated
+- [x] Bugfix: Removed "Other bookmarks" from select list
 
 ### 0.1.0
-[x] Bookmarks widget
+- [x] Bookmarks widget
