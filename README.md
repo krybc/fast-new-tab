@@ -4,6 +4,10 @@
 
 The most important feature of the **Fast New Tab** is it's speed. It is written in vanilla JS and CSS, without utilizing any JS libraries or CSS frameworks.
 
+![New tab preview](docs/images/preview1.jpg)
+
+![Options preview](docs/images/preview2.jpg)
+
 ## Requirements
 
 Google Chrome >= 70
